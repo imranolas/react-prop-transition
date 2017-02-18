@@ -1,0 +1,34 @@
+{
+  "name": "react-prop-transition",
+  "version": "0.0.1",
+  "description": "A React component for transitioning prop updates",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib --source-maps",
+    "prepublish": "npm run build"
+  },
+  "author": "Imran Sulemanji <imran.sulemanji@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "d3-ease": "^1.0.2",
+    "d3-interpolate": "^1.1.3",
+    "d3-timer": "^1.0.4"
+  },
+  "peerDependencies": {
+    "react": "^15.3.0 || ^16.0.0-alpha"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imranolas/react-prop-transition.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imranolas/react-prop-transition/issues"
+  },
+  "homepage": "https://github.com/imranolas/react-prop-transition#readme"
+}
