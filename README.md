@@ -13,6 +13,12 @@
   A component for easing props values
 </h4>
 
+<p align="center">
+<img height="100" src='https://cloud.githubusercontent.com/assets/4206028/23095996/13e790c0-f60c-11e6-8707-9ac34c15d67a.gif' />
+</p>
+
+
+
 ***
 
 Heavily inspired by React Motion. The `<Transition>` component will proxy
