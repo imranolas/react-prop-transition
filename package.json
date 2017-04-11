@@ -1,6 +1,6 @@
 {
   "name": "react-prop-transition",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React component for transitioning prop updates",
   "main": "lib/index.js",
   "scripts": {
