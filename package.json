@@ -9,6 +9,13 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "keywords": [
+    "react",
+    "react-native",
+    "props",
+    "easing-props-values",
+    "transition"
+  ],
   "author": "Imran Sulemanji <imran.sulemanji@gmail.com>",
   "license": "MIT",
   "dependencies": {
