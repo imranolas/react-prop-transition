@@ -52,5 +52,5 @@ import Transition from 'react-prop-transition';
 | Props | Description |
 |:---|:---|
 | `props` | The props object to be eased. Permitted values can be numbers, colors, arrays, dates and strings with a numerical element. #[d3.interpolateObject](https://github.com/d3/d3-interpolate#interpolateObject)  |
-| `easing` (optional) | Specifies the easing function as a string. _Permitted options_ |
+| `easing` (optional) | Specifies the easing function as a string. [_Permitted options_](https://github.com/imranolas/react-prop-transition/blob/master/src/easing.js) |
 | `duration` (optional) | The easing duration in ms |
