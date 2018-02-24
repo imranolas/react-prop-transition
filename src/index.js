@@ -1,4 +1,5 @@
-import {Component, PropTypes} from 'react';
+import {Component} from 'react';
+import PropTypes from 'prop-types';
 import {interpolateObject} from 'd3-interpolate';
 import {timer} from 'd3-timer';
 import easeMap from './easing';
