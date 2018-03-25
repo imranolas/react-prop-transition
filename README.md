@@ -25,7 +25,7 @@ Heavily inspired by React Motion. The `<Transition>` component will proxy
 props to a single functional child. When Transition receives new props it
 will interpolate values on each animation frame until complete or interrupted.
 
-The props object can be any object permitted by d3.interpolateObject. In practice
+The props object can be any object permitted by [`d3.interpolateObject`](https://github.com/d3/d3-interpolate#interpolateObject). In practice
 this allows for transitions of numbers, arrays, colors (as understood by CSS)
 and much more.
 
