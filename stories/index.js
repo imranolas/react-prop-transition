@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { storiesOf } from '@kadira/storybook';
 import Transition from '../src';
 import {random} from 'lodash';
@@ -8,7 +8,7 @@ class Container extends Component {
 
   constructor(props) {
     super(props);
-    this.state = props.nextState();
+    this.state = {...props.nextState(), mounted: true};
   }
 
   componentWillMount() {
@@ -17,9 +17,19 @@ class Container extends Component {
     }, 1500);
   }
 
+  componentWillUnmount = () => {
+    clearInterval(this.timer)
+  }
+
+  setParentState = state => {
+    this.setState(state)
+  }
   render() {
-    const el = React.cloneElement(this.props.children, {props: this.state});
-    return el;
+    let el =
+    	typeof this.props.children === 'object'
+    		? React.cloneElement(this.props.children, { props: this.state })
+    		: this.props.children({ props: this.state, setState: this.setParentState })
+    return el
   }
 }
 
@@ -35,6 +45,11 @@ const style = {
   boxShadow: '0 0 20px 0 rgba(0,0,0,0.1)'
 };
 
+const buttonStyle = {
+  textAlign: 'center',
+  margin: '50px auto'
+}
+
 storiesOf('Transition', module)
   .add('Number', () => (
     <Container nextState={() => ({number: random(9999)})}>
@@ -49,4 +64,26 @@ storiesOf('Transition', module)
         {({color}) => <div style={{ ...style, backgroundColor: color}}>{color}</div>}
       </Transition>
     </Container>
-  ));
+  ))
+  .add('Cancel on Unmount', () => (
+    <Container nextState={() => ({number: random(9999)})}>
+      {
+        ({props, setState}) => (
+          <div>
+            {
+              props.mounted &&
+              <Transition props={props} duration={1500}>
+                {({number}) => <div style={style}>{number.toFixed()}</div>}
+              </Transition>
+            }
+            <button
+              style={buttonStyle}
+              onClick={() => {
+                setState(state => ({mounted: !state.mounted}))
+              }}
+            >{props.mounted ? 'Unmount' : 'Mount'}</button>
+          </div>
+        )
+      }
+    </Container>
+  ))

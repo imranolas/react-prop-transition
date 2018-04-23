@@ -23,12 +23,17 @@ export default class Transition extends Component {
     this.state = {
       props: props.props
     };
+    this.mounted = true;
   }
 
   componentWillReceiveProps(props) {
     this.timer && this.timer.stop();
     this.interpolator = interpolateObject(this.state.props, props.props);
     this.start();
+  }
+
+  componentWillUnmount = () => {
+    this.mounted = false;
   }
 
   start = () => {
@@ -40,13 +45,17 @@ export default class Transition extends Component {
     const {duration, easing} = this.props;
     const t = elapsed / duration;
     let nextState;
-    if (t > 1) {
-      nextState = this.interpolator(1);
+    if(this.mounted){
+      if (t > 1 ) {
+        nextState = this.interpolator(1);
+        this.timer.stop();
+      } else {
+        nextState = this.interpolator(easeMap[easing](t));
+      }
+      this.setState({props: nextState});
+    }else{
       this.timer.stop();
-    } else {
-      nextState = this.interpolator(easeMap[easing](t));
     }
-    this.setState({props: nextState});
   }
 
   render() {
