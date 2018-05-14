@@ -32,7 +32,7 @@ export default class Transition extends Component {
   }
 
   componentWillUnmount = () => {
-    this.timer.stop();
+    this.timer && this.timer.stop();
   };
 
   start = () => {
