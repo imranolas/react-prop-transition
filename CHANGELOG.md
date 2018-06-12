@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 1.0.3
+### Fixed
+- Replace deprecated componentWillReceiveProps with componentDidUpdate [\#8](https://github.com/imranolas/react-prop-transition/pull/8) 
+
 ## 1.0.2
 ### Fixed
 - Do not attempt to stop a non-existing timer [\#7](https://github.com/imranolas/react-prop-transition/pull/7) 
