@@ -22,13 +22,18 @@ export default class Transition extends Component {
     this.state = {
       props: props.props
     };
-    this.mounted = true;
   }
 
-  componentWillReceiveProps(props) {
-    this.timer && this.timer.stop();
-    this.interpolator = interpolateObject(this.state.props, props.props);
-    this.start();
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.props !== prevProps.props ||
+      this.props.duration !== prevProps.duration ||
+      this.props.easing !== prevProps.easing
+    ) {
+      this.timer && this.timer.stop();
+      this.interpolator = interpolateObject(this.state.props, this.props.props);
+      this.start();
+    }
   }
 
   componentWillUnmount = () => {
